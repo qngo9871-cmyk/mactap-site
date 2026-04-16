@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacTap — Support</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0c0a;
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+        .container { max-width: 700px; margin: 0 auto; padding: 40px 20px; }
+        h1 { color: #00dc5a; margin-bottom: 5px; }
+        h2 { color: #00dc5a; margin-top: 30px; margin-bottom: 10px; font-size: 1.2em; }
+        .subtitle { color: #888; margin-bottom: 30px; }
+        p { margin-bottom: 15px; color: #ccc; }
+        a { color: #00dc5a; }
+        .faq { margin: 20px 0; }
+        .faq-item {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0, 220, 90, 0.1);
+        }
+        .faq-item h3 { color: #00dc5a; margin-bottom: 8px; font-size: 1em; }
+        .faq-item p { margin-bottom: 0; }
+        .contact-box {
+            background: rgba(0, 220, 90, 0.08);
+            border: 1px solid rgba(0, 220, 90, 0.2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            color: #666;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MacTap Support</h1>
+        <p class="subtitle">Get help with MacTap setup and troubleshooting.</p>
+
+        <div class="contact-box">
+            <h2 style="margin-top: 0;">Contact</h2>
+            <p>For bug reports, feature requests, or general questions:</p>
+            <p><strong>Email:</strong> <a href="mailto:mactap@quyenngo.com">mactap@quyenngo.com</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/qngo9871-cmyk/mactap/issues">Submit an issue</a></p>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <h3>What do I need to use MacTap?</h3>
+                <p>A Mac with Remote Login enabled, Tailscale installed on both your Mac and iPhone (free tier works), and an SSH key. An Apple Watch is optional but recommended for the best experience.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I set up Tailscale?</h3>
+                <p>Install Tailscale from tailscale.com on your Mac and from the App Store on your iPhone. Sign in with the same account on both devices. Your Mac will get a Tailscale IP address (usually starting with 100.x.x.x) — that's what you enter in MacTap.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I enable Remote Login on my Mac?</h3>
+                <p>Go to System Settings &rarr; General &rarr; Sharing &rarr; Remote Login. Turn it on and make sure your user account has access.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I create an SSH key?</h3>
+                <p>Open Terminal on your Mac and run: <code style="background: #1a1a1a; padding: 2px 6px; border-radius: 4px;">ssh-keygen -t ed25519</code>. This creates a key pair. Import the private key file into MacTap using the file picker in Settings.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Why does the app show "Not Connected"?</h3>
+                <p>Check that: (1) Tailscale is running on both your Mac and iPhone, (2) both devices are logged into the same Tailscale network, (3) the Tailscale IP in MacTap settings is correct, (4) Remote Login is enabled on your Mac, and (5) your SSH key is correctly imported.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Does my Apple Watch need Tailscale?</h3>
+                <p>No. The Watch sends commands to your iPhone via Bluetooth/WiFi (WatchConnectivity), and the iPhone relays them to your Mac via Tailscale SSH. Your Watch just needs to be paired with your iPhone.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is my connection secure?</h3>
+                <p>Yes. All commands travel over SSH, encrypted end-to-end via Tailscale's WireGuard-based mesh network. No data passes through any third-party servers. There is no backend or cloud service.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Does MacTap work without an Apple Watch?</h3>
+                <p>Yes. The iPhone app provides full functionality on its own. The Apple Watch is an optional companion for quick wrist-tap control.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Why can't I use Restart or Shutdown?</h3>
+                <p>These commands require confirmation (a dialog will appear) because they are destructive. They also require sudo access — your SSH user may need to be configured to run <code style="background: #1a1a1a; padding: 2px 6px; border-radius: 4px;">shutdown</code> without a password.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p><a href="index.html">Back to MacTap</a> &middot; <a href="privacy.html">Privacy Policy</a></p>
+            <p>&copy; 2026 Quyen Ngo. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
