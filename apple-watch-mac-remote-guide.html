@@ -77,6 +77,43 @@
             color: #777;
             font-size: 0.88em;
         }
+        figure { margin: 28px 0; text-align: center; }
+        figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+        }
+        figure.phone img { max-width: 280px; }
+        figure.watch img { max-width: 220px; }
+        figcaption { color: #888; font-size: 0.85em; margin-top: 10px; }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            margin: 28px 0 32px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 14px;
+            margin: 28px 0;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
         a { color: #00dc5a; }
         .cta {
             background: linear-gradient(135deg, rgba(0,220,90,0.15), rgba(0,220,90,0.05));
@@ -164,6 +201,10 @@
         <p class="subtitle">A 5-minute setup guide that finally fixes the "same WiFi only" problem.</p>
         <p class="meta">Updated 2026-05-08 · ~10 minute read</p>
 
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/3sbdMd8dHNM" title="MacTap demo: control your Mac from Apple Watch" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+        </div>
+
         <h2>The problem with most "Apple Watch Mac remote" apps</h2>
         <p>Search the App Store for "Mac remote" and you get a long list of apps that all do roughly the same thing — and all break the moment you leave your home WiFi. They use Bonjour discovery on the local network, which is fast and zero-config but completely useless from a coffee shop, an office on a different floor, a hotel room, or another country.</p>
         <p>That's a real limitation. The most useful Mac remote scenarios are exactly the ones where you <em>aren't</em> at home: pausing music your Mac is playing while you're in a meeting room three floors up, locking your Mac after you've left the house, restarting it from a different city, controlling it during a presentation when your laptop is plugged into a projector. None of those work over Bonjour.</p>
@@ -242,14 +283,29 @@ chmod 600 ~/.ssh/authorized_keys</code></pre>
             <li>Public key not added to <code>~/.ssh/authorized_keys</code> (Step 4)</li>
             <li>Wrong username (case-sensitive)</li>
         </ul>
-        <div class="image-placeholder">[ Screenshot needed: MacTap Setup screen showing Tailscale IP / username / key fields filled in ]</div>
+        <figure class="phone">
+            <img src="images/setup-screen.png" alt="MacTap Settings screen showing Tailscale IP, Mac username, and SSH key configuration fields">
+            <figcaption>MacTap Settings screen — Tailscale IP, username, and SSH key all in one place.</figcaption>
+        </figure>
 
         <h2>Step 6: Use it from your Watch</h2>
         <p>If you have an Apple Watch paired with the iPhone where MacTap is installed, the Watch app installs automatically. Open it and you'll see a list of preset commands. Tap any one — your Mac executes it within a second.</p>
         <p>The Watch doesn't need its own Tailscale client or SSH connection. Commands relay through your iPhone via WatchConnectivity (a built-in Apple framework), and the iPhone handles the SSH session. As long as your iPhone and Watch are within Bluetooth range — about 10 metres, or anywhere on the same WiFi — the Watch works.</p>
-        <div class="image-placeholder">[ Screenshot needed: Apple Watch showing MacTap command list ]</div>
+        <figure class="watch">
+            <img src="images/watch-power.png" alt="MacTap on Apple Watch Ultra showing Power, Sleep, and Lock command buttons">
+            <figcaption>MacTap on Apple Watch — single-tap commands, no menus.</figcaption>
+        </figure>
 
         <h3>The 50+ commands MacTap ships with</h3>
+
+        <div class="gallery">
+            <img src="images/power-tab.png" alt="MacTap Power tab: Sleep, Lock, Wake, Restart, Shutdown">
+            <img src="images/audio-tab.png" alt="MacTap Audio tab: Volume Up, Volume Down, Mute, presets, volume check">
+            <img src="images/media-tab.png" alt="MacTap Media tab: Play/Pause, Next, Previous, Stop, Play Liked, Play Playlist, Now Playing, Play Radio">
+            <img src="images/apps-tab.png" alt="MacTap Apps tab: Safari, Finder, Messages, Mail, Calendar, Reminders, FaceTime, Music, Notes, Photos, Maps, Weather, Contacts, Calculator, App Store, Settings, Terminal, Xcode">
+            <img src="images/system-tab.png" alt="MacTap System tab: Empty Trash, Kill Front App, Battery, Uptime, Disk Space, Close All Apps, Wi-Fi IP, Top CPU">
+        </div>
+
         <table>
             <thead><tr><th>Category</th><th>Commands</th></tr></thead>
             <tbody>
