@@ -87,20 +87,13 @@
         figure.phone img { max-width: 280px; }
         figure.watch img { max-width: 220px; }
         figcaption { color: #888; font-size: 0.85em; margin-top: 10px; }
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            margin: 28px 0 32px;
+        .demo-video {
+            display: block;
+            margin: 28px auto 32px;
+            max-width: 320px;
+            width: 100%;
             border-radius: 14px;
-            overflow: hidden;
             box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-        }
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            border: 0;
         }
         .gallery {
             display: grid;
@@ -201,9 +194,10 @@
         <p class="subtitle">A 5-minute setup guide that finally fixes the "same WiFi only" problem.</p>
         <p class="meta">Updated 2026-05-08 · ~10 minute read</p>
 
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/3sbdMd8dHNM" title="MacTap demo: control your Mac from Apple Watch" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
-        </div>
+        <video class="demo-video" controls preload="metadata" playsinline poster="images/setup-screen.png">
+            <source src="videos/mactap-demo.mp4" type="video/mp4">
+            Your browser does not support video playback. <a href="videos/mactap-demo.mp4">Download the demo</a>.
+        </video>
 
         <h2>The problem with most "Apple Watch Mac remote" apps</h2>
         <p>Search the App Store for "Mac remote" and you get a long list of apps that all do roughly the same thing — and all break the moment you leave your home WiFi. They use Bonjour discovery on the local network, which is fast and zero-config but completely useless from a coffee shop, an office on a different floor, a hotel room, or another country.</p>
